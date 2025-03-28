@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MyFamily - Cherished Memories</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+      :root {
+        --primary-color: #6c5ce7;
+        --secondary-color: #fecc9b;
+        --accent-color: #fd79a8;
+        --light-color: #f8f9fa;
+        --dark-color: #343b40;
+      }
+      
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f9f9f9;
+        overflow-x: hidden;
+      }
+      
+      .hero-section {
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        color: white;
+        padding: 5rem 0;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .hero-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(255,255,255,0.05)" d="M0,0 L100,0 L100,100 L0,100 Z"></path></svg>');
+        background-size: cover;
+      }
+      
+      .hero-title {
+        font-weight: 700;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+      }
+      
+      .family-card {
+        transition: all 0.3s ease;
+        border: none;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        margin-bottom: 30px;
+      }
+      
+      .family-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+      }
+      
+      .family-card img {
+        transition: all 0.5s ease;
+      }
+      
+      .family-card:hover img {
+        transform: scale(1.05);
+      }
+      
+      .memory-section {
+        background-color: white;
+        padding: 5rem 0;
+      }
+      
+      .section-title {
+        position: relative;
+        display: inline-block;
+        margin-bottom: 2rem;
+      }
+      
+      .section-title::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        width: 50%;
+        height: 4px;
+        background: var(--accent-color);
+        border-radius: 2px;
+      }
+      
+      .testimonial-card {
+        background: white;
+        border-radius: 15px;
+        padding: 2rem;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        position: relative;
+        margin: 1rem;
+      }
+      
+      .testimonial-card::before {
+        content: '"';
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        font-size: 5rem;
+        color: rgba(0,0,0,0.05);
+        font-family: Georgia, serif;
+        line-height: 1;
+      }
+      
+      .footer {
+        background: var(--dark-color);
+        color: white;
+        padding: 3rem 0;
+      }
+      
+      .heart {
+        color: var(--accent-color);
+        animation: heartbeat 1.5s infinite;
+        display: inline-block;
+      }
+      
+      @keyframes heartbeat {
+        0% { transform: scale(1); }
+        25% { transform: scale(1.1); }
+        50% { transform: scale(1); }
+        75% { transform: scale(1.1); }
+        100% { transform: scale(1); }
+      }
+      
+      .floating {
+        animation: floating 3s ease-in-out infinite;
+      }
+      
+      @keyframes floating {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-15px); }
+        100% { transform: translateY(0px); }
+      }
+      
+      .photo-gallery {
+        column-count: 3;
+        column-gap: 1rem;
+      }
+      
+      .photo-gallery img {
+        width: 100%;
+        height: auto;
+        margin-bottom: 1rem;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+      
+      .photo-gallery img:hover {
+        transform: scale(1.02);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      }
+      
+      @media (max-width: 768px) {
+        .photo-gallery {
+          column-count: 2;
+        }
+      }
+      
+      @media (max-width: 576px) {
+        .photo-gallery {
+          column-count: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="#">My<span class="text-warning">Family</span></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="love.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="memories.html">Memories</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                Special
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Mummy</a></li>
+                <li><a class="dropdown-item" href="#">Bhai</a></li>
+                <li><a class="dropdown-item" href="#">Rubu</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="memories.html">More Memories</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About</a>
+            </li>
+          </ul>
+          <form class="d-flex ms-3">
+            <input class="form-control me-2" type="search" placeholder="Search memories...">
+            <button class="btn btn-outline-light" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section text-center">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6 animate__animated animate__fadeInLeft">
+            <h1 class="hero-title display-3 fw-bold mb-4">Our Family <span class="heart">❤</span> Memories</h1>
+            <p class="lead mb-4">Cherishing every moment, celebrating every bond, and preserving our beautiful journey together.</p>
+            <a href="#memories" class="btn btn-light btn-lg px-4 me-2">Explore Memories</a>
+            <a href="#family" class="btn btn-outline-light btn-lg px-4">Meet the Family</a>
+          </div>
+          <div class="col-lg-6 animate__animated animate__fadeInRight">
+            <img src="/images/WhatsApp Image 2025-03-27 at 4.41.09 PM (1).jpeg" alt="Happy family" class="img-fluid rounded-circle floating" style="max-height: 400px; border: 5px solid white;">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Family Members Section -->
+    <section id="family" class="py-5 bg-light">
+      <div class="container">
+        <h2 class="text-center section-title animate__animated animate__fadeIn">Meet Our Family</h2>
+        <p class="text-center mb-5 animate__animated animate__fadeIn animate__delay-1s">The most important people in my life who make every moment special.</p>
+        
+        <div class="row">
+          <!-- Mummy Card -->
+          <div class="col-md-4 animate__animated animate__fadeInUp">
+            <div class="family-card">
+              <img src="/images/WhatsApp Image 2025-03-27 at 11.10.21 PM.jpeg" class="card-img-top" alt="Mother">
+              <div class="card-body text-center">
+                <h5 class="card-title">Mummy</h5>
+                <p class="card-text text-muted">The heart of our family, whose love knows no bounds.</p>
+                <a href="#" class="btn btn-primary">View Memories</a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Bhai Card -->
+          <div class="col-md-4 animate__animated animate__fadeInUp animate__delay-1s">
+            <div class="family-card">
+              <img src="/images/WhatsApp Image 2025-03-27 at 4.16.01 PM (1).jpeg" class="card-img-top" alt="Brother">
+              <div class="card-body text-center">
+                <h5 class="card-title">Bhai</h5>
+                <p class="card-text text-muted">My partner in crime and my strongest supporter.</p>
+                <a href="#" class="btn btn-primary">View Memories</a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Rubu Card -->
+          <div class="col-md-4 animate__animated animate__fadeInUp animate__delay-2s">
+            <div class="family-card">
+              <img src="/images/WhatsApp Image 2025-03-27 at 11.10.31 PM.jpeg" class="card-img-top" alt="Rubu">
+              <div class="card-body text-center">
+                <h5 class="card-title">Rubu</h5>
+                <p class="card-text text-muted">my heartbeat,my cuteiipie</p>
+                <a href="#" class="btn btn-primary">View Memories</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Memories Section -->
+    <section id="memories" class="memory-section">
+      <div class="container">
+        <h2 class="text-center section-title animate__animated animate__fadeIn">Precious Memories</h2>
+        <p class="text-center mb-5 animate__animated animate__fadeIn animate__delay-1s">Moments that turned into beautiful memories we'll cherish forever.</p>
+        
+        <!-- Photo Gallery -->
+        <div class="photo-gallery">
+          <img src="/images/WhatsApp Image 2025-03-27 at 11.10.14 PM.jpeg" alt="Family gathering" class="animate__animated animate__zoomIn">
+          <img src="/images/WhatsApp Image 2025-03-27 at 11.10.28 PM.jpeg" alt="Celebration" class="animate__animated animate__zoomIn animate__delay-1s">
+          <img src="/images/WhatsApp Image 2025-03-27 at 4.41.11 PM (1).jpeg" alt="Vacation" class="animate__animated animate__zoomIn animate__delay-2s">
+          <img src="/images/WhatsApp Image 2025-03-27 at 4.41.09 PM.jpeg" alt="Dinner" class="animate__animated animate__zoomIn">
+          <img src="/images/WhatsApp Image 2025-03-27 at 4.41.05 PM.jpeg" alt="Festival" class="animate__animated animate__zoomIn animate__delay-1s">
+          <img src="/images/WhatsApp Image 2025-03-27 at 4.41.05 PM (1).jpeg" alt="Birthday" class="animate__animated animate__zoomIn animate__delay-2s">
+        </div>
+        
+        <div class="text-center mt-5">
+          <a href="memories.html" class="btn btn-primary btn-lg px-4">View All Memories</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-5 bg-light">
+      <div class="container">
+        <h2 class="text-center section-title animate__animated animate__fadeIn">What Family Means</h2>
+        <p class="text-center mb-5 animate__animated animate__fadeIn animate__delay-1s">Words from the heart about our family bonds.</p>
+        
+        <div class="row">
+          <div class="col-md-4 animate__animated animate__fadeIn">
+            <div class="testimonial-card">
+              <p>"Family is not an important thing. It's everything. The love we share is my greatest treasure."</p>
+              <div class="d-flex align-items-center mt-3">
+                <img src="/images/WhatsApp Image 2025-03-27 at 11.10.21 PM.jpeg" class="rounded-circle me-3" width="50" alt="Mummy">
+                <div>
+                  <h6 class="mb-0">Mummy</h6>
+                  <small class="text-muted">Heart of the Family</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-md-4 animate__animated animate__fadeIn animate__delay-1s">
+            <div class="testimonial-card">
+              <p>"In our family, we have all the best memories - the fights, the laughter, the tears, and most of all, the love."</p>
+              <div class="d-flex align-items-center mt-3">
+                <img src="/images/WhatsApp Image 2025-03-27 at 4.16.01 PM.jpeg" class="rounded-circle me-3" width="50" alt="Bhai">
+                <div>
+                  <h6 class="mb-0">Bhai</h6>
+                  <small class="text-muted">Protector & Partner</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-md-4 animate__animated animate__fadeIn animate__delay-2s">
+            <div class="testimonial-card">
+              <p>"Every day with my family feels like a celebration. I'm so grateful for all the love and happiness we share."</p>
+              <div class="d-flex align-items-center mt-3">
+                <img src="/images/WhatsApp Image 2025-03-27 at 11.10.32 PM.jpeg" class="rounded-circle me-3" width="50" alt="Rubu">
+                <div>
+                  <h6 class="mb-0">Rubu</h6>
+                  <small class="text-muted">Joy Bringer</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-5 text-white" style="background: linear-gradient(135deg, var(--accent-color), #e84393);">
+      <div class="container text-center">
+        <h2 class="display-5 fw-bold mb-4 animate__animated animate__pulse animate__infinite">Ready to Create More Beautiful Memories?</h2>
+        <p class="lead mb-4">Let's plan our next family gathering and make more moments to cherish!</p>
+        <button class="btn btn-light btn-lg px-4 me-2 animate__animated animate__bounceIn">Plan an Event</button>
+        <button class="btn btn-outline-light btn-lg px-4 animate__animated animate__bounceIn animate__delay-1s">Share a Memory</button>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 mb-4">
+            <h5>MyFamily</h5>
+            <p>A digital home for our precious memories and the love we share as a family.</p>
+            <div class="social-icons">
+              <a href="#" class="text-white me-2"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" class="text-white me-2"><i class="fab fa-instagram"></i></a>
+              <a href="#" class="text-white me-2"><i class="fab fa-twitter"></i></a>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-6 mb-4">
+            <h5>Quick Links</h5>
+            <ul class="list-unstyled">
+              <li><a href="love.html" class="text-white">Home</a></li>
+              <li><a href="memories.html" class="text-white">Memories</a></li>
+              <li><a href="#" class="text-white">Mummy</a></li>
+              <li><a href="#" class="text-white">Bhai</a></li>
+              <li><a href="#" class="text-white">Rubu</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-md-6 mb-4">
+            <h5>Family Events</h5>
+            <ul class="list-unstyled">
+              <li><a href="#" class="text-white">Birthdays</a></li>
+              <li><a href="#" class="text-white">Anniversaries</a></li>
+              <li><a href="#" class="text-white">Festivals</a></li>
+              <li><a href="#" class="text-white">Vacations</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-3 mb-4">
+            <h5>Stay Updated</h5>
+            <p>Subscribe to our family newsletter for updates and memories.</p>
+            <div class="input-group mb-3">
+              <input type="email" class="form-control" placeholder="Your Email">
+              <button class="btn btn-primary" type="button">Subscribe</button>
+            </div>
+          </div>
+        </div>
+        <hr class="mt-4 mb-4" style="border-color: rgba(255,255,255,0.1);">
+        <div class="text-center">
+          <p class="mb-0">Made with <span class="heart">❤</span> for my beloved family © 2023 MyFamily. All memories reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script>
+      // Simple animation trigger on scroll
+      document.addEventListener('DOMContentLoaded', function() {
+        const animateElements = document.querySelectorAll('.animate__animated');
+        
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const animation = entry.target.getAttribute('class').match(/animate__(\w+)/)[1];
+              entry.target.classList.add(`animate__${animation}`);
+              observer.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.1
+        });
+        
+        animateElements.forEach(element => {
+          observer.observe(element);
+        });
+        
+        // Floating animation for cards on hover
+        const familyCards = document.querySelectorAll('.family-card');
+        familyCards.forEach(card => {
+          card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-10px)';
+          });
+          card.addEventListener('mouseleave', function() {
+            this.style.transform = '';
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
